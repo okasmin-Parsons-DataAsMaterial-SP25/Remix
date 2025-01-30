@@ -1,0 +1,65 @@
+body {
+	margin: 60px;
+}
+
+#app {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+}
+
+#poem {
+	/* border-style: solid; */
+	padding: 20px;
+	margin: 20px;
+	font-size: 16px;
+}
+
+.variation1 {
+	line-height: 48px;
+
+	& .first {
+		display: inline-block;
+		transform: rotate(300deg);
+	}
+
+	& .last {
+		display: inline-block;
+		transform: rotate(60deg);
+	}
+}
+
+.variation2 {
+	line-height: 40px;
+
+	& span {
+		display: inline-block;
+		transform: rotate(20deg);
+	}
+}
+
+.variation3 {
+	line-height: 80px;
+	& .even {
+		display: inline-block;
+		transform: rotate(8deg);
+	}
+
+	& .odd {
+		display: inline-block;
+		transform: rotate(-8deg);
+	}
+}
+
+.variation4 {
+	line-height: 42px;
+	& .even {
+		display: inline-block;
+		transform: rotate(8deg);
+	}
+
+	& .odd {
+		display: inline-block;
+		transform: rotate(-8deg);
+	}
+}
