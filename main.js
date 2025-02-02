@@ -225,12 +225,118 @@ const vertical4 = () => {
 	poemDiv.append(vertical4Div);
 };
 
-/**
- * other rule ideas
- * line spacing (increasing and go down, and opposite)
- * hover?
- * increase as go down - line spacing, dots on increasingly more words, text size, etc
- */
+/** Snow */
+
+// large snowflake
+const snow1 = () => {
+	const snow1Div = document.createElement("div");
+	const angleIncrement = 360 / lines.length;
+
+	lines.forEach((line, idx) => {
+		const angle = idx * angleIncrement;
+		const lineDiv = document.createElement("div");
+		lineDiv.classList.add("snow1Line");
+		lineDiv.innerText = line;
+
+		const distanceFromCenter = 60; // Adjust to spread lines further out
+		lineDiv.style.transformOrigin = "left center";
+
+		lineDiv.style.transform = `rotate(${angle}deg) translateX(${distanceFromCenter}px)`;
+		snow1Div.append(lineDiv);
+	});
+
+	poemDiv.append(snow1Div);
+};
+
+// line snowflakes
+const snow2 = () => {
+	const snow2Div = document.createElement("div");
+	snow2Div.classList.add("snow2");
+
+	lines.forEach((line) => {
+		const lineDiv = document.createElement("div");
+
+		const words = line.split(" ");
+		const angleIncrement = 360 / words.length;
+
+		words.forEach((word, idx) => {
+			const angle = idx * angleIncrement;
+			const wordDiv = document.createElement("div");
+			wordDiv.classList.add("snow2Word");
+			wordDiv.innerText = word;
+			const distanceFromCenter = 40;
+			wordDiv.style.transformOrigin = "left center";
+			wordDiv.style.transform = `rotate(${angle}deg) translateX(${distanceFromCenter}px)`;
+			lineDiv.append(wordDiv);
+		});
+
+		snow2Div.append(lineDiv);
+	});
+	poemDiv.append(snow2Div);
+};
+
+// large snowflake with decoration
+const snow3 = () => {
+	const snow3Div = document.createElement("div");
+	const angleIncrement = 360 / lines.length;
+
+	lines.forEach((line, idx) => {
+		const angle = idx * angleIncrement;
+		const lineDiv = document.createElement("div");
+		lineDiv.classList.add("snow1Line");
+		lineDiv.classList.add("snow3Line");
+		lineDiv.innerText = line;
+
+		const distanceFromCenter = 60; // Adjust to spread lines further out
+		lineDiv.style.transformOrigin = "left center";
+
+		lineDiv.style.transform = `rotate(${angle}deg) translateX(${distanceFromCenter}px)`;
+		snow3Div.append(lineDiv);
+	});
+
+	poemDiv.append(snow3Div);
+};
+
+// line snowflakes with decoration
+const snow4 = () => {
+	const emphasis = [
+		"sesame",
+		"dot open",
+		"triangle",
+		"circle",
+		"double-circle",
+		"sesame open",
+		"dot",
+		"triangle open",
+		"double-circle open",
+	];
+
+	const snow4Div = document.createElement("div");
+	snow4Div.classList.add("snow2");
+
+	lines.forEach((line, idx) => {
+		const lineDiv = document.createElement("div");
+		lineDiv.classList.add("snow4Line");
+		lineDiv.style.textEmphasisStyle = `${emphasis[idx]}`;
+
+		const words = line.split(" ");
+		const angleIncrement = 360 / words.length;
+
+		words.forEach((word, idx) => {
+			const angle = idx * angleIncrement;
+			const wordDiv = document.createElement("div");
+			wordDiv.classList.add("snow2Word");
+			wordDiv.innerText = word;
+			const distanceFromCenter = 40;
+			wordDiv.style.transformOrigin = "left center";
+			wordDiv.style.transform = `rotate(${angle}deg) translateX(${distanceFromCenter}px)`;
+			lineDiv.append(wordDiv);
+		});
+
+		snow4Div.append(lineDiv);
+	});
+	poemDiv.append(snow4Div);
+};
 
 /**
  * Set the correct variation based on the navigation
@@ -271,6 +377,18 @@ const changeVariation = (variationNum) => {
 			break;
 		case vertical4:
 			vertical4();
+			break;
+		case snow1:
+			snow1();
+			break;
+		case snow2:
+			snow2();
+			break;
+		case snow3:
+			snow3();
+			break;
+		case snow4:
+			snow4();
 			break;
 		case 0:
 			poemDiv.innerHTML = noStyling;

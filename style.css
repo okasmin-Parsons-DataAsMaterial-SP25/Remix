@@ -10,7 +10,6 @@ body {
 }
 
 #poem {
-	/* border-style: solid; */
 	padding: 20px;
 	margin: 20px;
 	font-size: 20px;
@@ -78,16 +77,13 @@ body {
 }
 
 .vertical1 .word {
-	display: inline-block; /* Needed for transform to work */
+	display: inline-block;
 	transform: rotate(-90deg);
 }
 
 .vertical2 {
 	transform: rotate(-90deg);
 	line-height: 42px;
-	/* display: flex;
-	justify-content: center;
-	align-items: center; */
 }
 
 .vertical2 pre {
@@ -111,4 +107,34 @@ body {
 
 .vertical4 span {
 	min-height: 1em;
+}
+
+.snow1Line {
+	position: absolute;
+	top: 60%;
+	transform-origin: left center;
+	white-space: nowrap;
+	font-size: 16px;
+}
+
+.snow2 {
+	display: flex;
+	flex-direction: column;
+	row-gap: 300px;
+}
+
+.snow2Word {
+	position: absolute;
+	transform-origin: left center;
+	white-space: nowrap;
+	font-size: 16px;
+}
+
+.snow3Line {
+	text-emphasis-position: under right;
+	text-emphasis-style: sesame;
+}
+
+.snow4Line {
+	text-emphasis-position: under right;
 }
