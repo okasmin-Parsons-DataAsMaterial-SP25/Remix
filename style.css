@@ -1,6 +1,22 @@
 body {
 	margin: 60px;
 	font-size: 20px;
+	font-family: monospace;
+}
+
+a {
+	color: black;
+	margin: 5px;
+}
+
+a:hover {
+	text-decoration: none;
+	font-weight: bolder;
+}
+
+.link-row {
+	padding: 10px;
+	font-size: 12px;
 }
 
 #app {
@@ -12,8 +28,7 @@ body {
 #poem {
 	padding: 20px;
 	margin: 20px;
-	font-size: 20px;
-	font-family: monospace;
+	/* font-size: 20px; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -70,6 +85,7 @@ body {
 
 .variation7 {
 	line-height: 42px;
+	text-align: center;
 }
 
 .vertical1 {

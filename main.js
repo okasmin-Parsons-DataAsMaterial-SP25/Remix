@@ -124,7 +124,7 @@ const diagonal2 = () => {
 };
 
 /**
- * Rule 2 - increase as descend
+ * Rule 2 - condense as descend
  */
 
 /**
@@ -133,7 +133,7 @@ const diagonal2 = () => {
 const appendVariation5 = () => {
 	const lineHeights = lines
 		.map((line, idx) => {
-			const lineHeight = idx * 1.1 + 2;
+			const lineHeight = (lines.length - idx) * 1.1 + 0.5;
 			return `<span style="font-size:16px; line-height:${lineHeight}em;">${line}</span>`;
 		})
 		.join("\n");
@@ -144,11 +144,12 @@ const appendVariation5 = () => {
 	poemDiv.append(variation5Div);
 };
 
+// font size
 const appendVariation6 = () => {
 	const fontSizes = lines
 		.map((line, idx) => {
-			const fontSize = idx * 2.5 + 20;
-			return `<span style="font-size:${fontSize}px; ">${line}</span>`;
+			const fontSize = (lines.length - idx) * 2.5 + 20;
+			return `<div style="font-size:${fontSize}px; ">${line}</div>`;
 		})
 		.join("\n");
 
@@ -158,11 +159,11 @@ const appendVariation6 = () => {
 	poemDiv.append(variation6Div);
 };
 
+// letter spacing
 const appendVariation7 = () => {
 	const letterSpaces = lines
 		.map((line, idx) => {
-			const letterSpacing = idx * 1.15 + 0.1;
-			console.log({ letterSpacing });
+			const letterSpacing = (lines.length - idx) * 2.5;
 			return `<span style="letter-spacing:${letterSpacing}px;">${line}</span>`;
 		})
 		.join("\n");
@@ -172,6 +173,17 @@ const appendVariation7 = () => {
 	variation7Div.innerHTML = `<pre>${letterSpaces}</pre>`;
 
 	poemDiv.append(variation7Div);
+};
+
+const variation8 = () => {
+	const variation8Div = document.createElement("div");
+	lines.forEach((line, idx) => {
+		const lineDiv = document.createElement("div");
+		lineDiv.innerText = line;
+		lineDiv.style.fontWeight = 100 * idx + 100;
+		variation8Div.append(lineDiv);
+	});
+	poemDiv.append(variation8Div);
 };
 
 /**
@@ -338,6 +350,70 @@ const snow4 = () => {
 	poemDiv.append(snow4Div);
 };
 
+// normal align left
+const decreaseLineHeight1 = () => {
+	const lineHeights = lines
+		.map((line, idx) => {
+			const lineHeight = (lines.length - idx) * 1.1 + 0.5;
+			return `<span style="font-size:16px; line-height:${lineHeight}em;">${line}</span>`;
+		})
+		.join("\n");
+
+	const decreaseLineHeight1 = document.createElement("div");
+	decreaseLineHeight1.innerHTML = `<pre>${lineHeights}</pre>`;
+
+	poemDiv.append(decreaseLineHeight1);
+};
+
+// align center
+const decreaseLineHeight2 = () => {
+	const lineHeights = lines
+		.map((line, idx) => {
+			const lineHeight = (lines.length - idx) * 1.1 + 0.5;
+			return `<span style="font-size:16px; line-height:${lineHeight}em;">${line}</span>`;
+		})
+		.join("\n");
+
+	const decreaseLineHeight1 = document.createElement("div");
+	decreaseLineHeight1.innerHTML = `<pre style="text-align: center;">${lineHeights}</pre>`;
+
+	poemDiv.append(decreaseLineHeight1);
+};
+
+// stagger from left
+const decreaseLineHeight3 = () => {
+	const lineHeights = lines
+		.map((line, idx) => {
+			const lineHeight = (lines.length - idx) * 1.1 + 0.5;
+			return `<span style="font-size:16px; line-height:${lineHeight}em; margin-left:${
+				idx * 40
+			}px">${line}</span>`;
+		})
+		.join("\n");
+
+	const decreaseLineHeight1 = document.createElement("div");
+	decreaseLineHeight1.innerHTML = `<pre>${lineHeights}</pre>`;
+
+	poemDiv.append(decreaseLineHeight1);
+};
+
+// stagger from right
+const decreaseLineHeight4 = () => {
+	const lineHeights = lines
+		.map((line, idx) => {
+			const lineHeight = (lines.length - idx) * 1.1 + 0.5;
+			return `<span style="font-size:16px; line-height:${lineHeight}em; margin-left:${
+				320 - idx * 40
+			}px">${line}</span>`;
+		})
+		.join("\n");
+
+	const decreaseLineHeight1 = document.createElement("div");
+	decreaseLineHeight1.innerHTML = `<pre>${lineHeights}</pre>`;
+
+	poemDiv.append(decreaseLineHeight1);
+};
+
 /**
  * Set the correct variation based on the navigation
  */
@@ -366,6 +442,9 @@ const changeVariation = (variationNum) => {
 		case 7:
 			appendVariation7();
 			break;
+		case 8:
+			variation8();
+			break;
 		case vertical1:
 			vertical1();
 			break;
@@ -389,6 +468,18 @@ const changeVariation = (variationNum) => {
 			break;
 		case snow4:
 			snow4();
+			break;
+		case decreaseLineHeight1:
+			decreaseLineHeight1();
+			break;
+		case decreaseLineHeight2:
+			decreaseLineHeight2();
+			break;
+		case decreaseLineHeight3:
+			decreaseLineHeight3();
+			break;
+		case decreaseLineHeight4:
+			decreaseLineHeight4();
 			break;
 		case 0:
 			poemDiv.innerHTML = noStyling;
