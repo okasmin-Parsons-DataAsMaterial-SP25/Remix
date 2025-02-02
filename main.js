@@ -20,14 +20,25 @@ const variationTitle = document.getElementById("variation-title");
 
 const lines = poem.split("\n");
 
+const spanAllWords = lines
+	.map((line) => {
+		const words = line.split(" ");
+		return words
+			.map((word) => {
+				return `<span class="word">${word}</span>`;
+			})
+			.join(" ");
+	})
+	.join("\n");
+
 /*
- * Rule 1 - Rotation
+ * Rule 1 - Diagonal - sense of movement and playful
  */
 
 /*
- * Variation 1 - first and last words
+ * Diagonal 3 - first and last words
  */
-const appendVariation1 = () => {
+const diagonal3 = () => {
 	const firstLastWordsSpan = lines
 		.map((line, idx) => {
 			const words = line.split(" ");
@@ -42,17 +53,15 @@ const appendVariation1 = () => {
 		})
 		.join("\n");
 
-	const variation1Div = document.createElement("div");
-	variation1Div.classList.add("variation1");
-	variation1Div.innerHTML = `<pre>${firstLastWordsSpan}</pre>`;
+	const diagonal3Div = document.createElement("div");
+	diagonal3Div.classList.add("diagonal3");
+	diagonal3Div.innerHTML = `<pre>${firstLastWordsSpan}</pre>`;
 
-	poemDiv.append(variation1Div);
+	poemDiv.append(diagonal3Div);
 };
 
-/*
- * Variation 2 - last words
- */
-const appendVariation2 = () => {
+//  last words diagonal
+const diagonal4 = () => {
 	const firstWordsSpan = lines
 		.map((line) => {
 			const words = line.split(" ");
@@ -63,17 +72,15 @@ const appendVariation2 = () => {
 		})
 		.join("\n");
 
-	const variation2Div = document.createElement("div");
-	variation2Div.classList.add("variation2");
-	variation2Div.innerHTML = `<pre>${firstWordsSpan}</pre>`;
+	const diagonal4Div = document.createElement("div");
+	diagonal4Div.classList.add("diagonal4");
+	diagonal4Div.innerHTML = `<pre>${firstWordsSpan}</pre>`;
 
-	poemDiv.append(variation2Div);
+	poemDiv.append(diagonal4Div);
 };
 
-/*
- * Variation 3 - every other line
- */
-const appendVariation3 = () => {
+// every other line diagonal alternating
+const diagonal1 = () => {
 	const everyOtherLine = lines
 		.map((line, idx) => {
 			if (idx % 2 === 0) {
@@ -84,18 +91,17 @@ const appendVariation3 = () => {
 		})
 		.join("\n");
 
-	const variation3Div = document.createElement("div");
-	variation3Div.classList.add("variation3");
-	variation3Div.innerHTML = `<pre>${everyOtherLine}</pre>`;
+	const diagonal1Div = document.createElement("div");
+	diagonal1Div.classList.add("diagonal1");
+	diagonal1Div.innerHTML = `<pre>${everyOtherLine}</pre>`;
 
-	poemDiv.append(variation3Div);
+	poemDiv.append(diagonal1Div);
 };
 
 /*
- * Variation 4 - every other word
+ * diagonal 2 - every other word
  */
-const appendVariation4 = () => {
-	const lines = poem.split("\n");
+const diagonal2 = () => {
 	const evenWordsSpan = lines
 		.map((line) => {
 			const words = line.split(" ");
@@ -110,35 +116,161 @@ const appendVariation4 = () => {
 		})
 		.join("\n");
 
-	const variation4Div = document.createElement("div");
-	variation4Div.classList.add("variation4");
-	variation4Div.innerHTML = `<pre>${evenWordsSpan}</pre>`;
+	const diagonal2Div = document.createElement("div");
+	diagonal2Div.classList.add("diagonal2");
+	diagonal2Div.innerHTML = `<pre>${evenWordsSpan}</pre>`;
 
-	poemDiv.append(variation4Div);
+	poemDiv.append(diagonal2Div);
 };
 
-/*
- * Rule 2 - grammar
+/**
+ * Rule 2 - increase as descend
+ */
+
+/**
+ * Variation 5 - increase lineHeight as descend
+ */
+const appendVariation5 = () => {
+	const lineHeights = lines
+		.map((line, idx) => {
+			const lineHeight = idx * 1.1 + 2;
+			return `<span style="font-size:16px; line-height:${lineHeight}em;">${line}</span>`;
+		})
+		.join("\n");
+
+	const variation5Div = document.createElement("div");
+	variation5Div.innerHTML = `<pre>${lineHeights}</pre>`;
+
+	poemDiv.append(variation5Div);
+};
+
+const appendVariation6 = () => {
+	const fontSizes = lines
+		.map((line, idx) => {
+			const fontSize = idx * 2.5 + 20;
+			return `<span style="font-size:${fontSize}px; ">${line}</span>`;
+		})
+		.join("\n");
+
+	const variation6Div = document.createElement("div");
+	variation6Div.innerHTML = `<pre>${fontSizes}</pre>`;
+
+	poemDiv.append(variation6Div);
+};
+
+const appendVariation7 = () => {
+	const letterSpaces = lines
+		.map((line, idx) => {
+			const letterSpacing = idx * 1.15 + 0.1;
+			console.log({ letterSpacing });
+			return `<span style="letter-spacing:${letterSpacing}px;">${line}</span>`;
+		})
+		.join("\n");
+
+	const variation7Div = document.createElement("div");
+	variation7Div.classList.add("variation7");
+	variation7Div.innerHTML = `<pre>${letterSpaces}</pre>`;
+
+	poemDiv.append(variation7Div);
+};
+
+/**
+ * Vertical
+ */
+
+// words vertical
+const vertical1 = () => {
+	const vertical1Div = document.createElement("div");
+	vertical1Div.classList.add("vertical1");
+	vertical1Div.innerHTML = `<pre>${spanAllWords}</pre>`;
+
+	poemDiv.append(vertical1Div);
+};
+
+// entire poem rotated 90 degrees - line ends aligned
+const vertical2 = () => {
+	const vertical2Div = document.createElement("div");
+	vertical2Div.classList.add("vertical2");
+	vertical2Div.innerHTML = `<pre>${poem}</pre>`;
+
+	poemDiv.append(vertical2Div);
+};
+
+// entire poem rotated 90 degrees - line starts aligned
+const vertical3 = () => {
+	const vertical3Div = document.createElement("div");
+	vertical3Div.classList.add("vertical3");
+	vertical3Div.innerHTML = `<pre>${poem}</pre>`;
+
+	poemDiv.append(vertical3Div);
+};
+
+// each line becomes a column
+const vertical4 = () => {
+	const vertical4Div = document.createElement("div");
+
+	lines.forEach((line) => {
+		const lineDiv = document.createElement("div");
+		lineDiv.classList.add("vertical4Line");
+		const letters = line.split("");
+		letters.forEach((letter) => {
+			const letterSpan = document.createElement("span");
+			letterSpan.innerText = letter;
+			lineDiv.append(letterSpan);
+		});
+		vertical4Div.append(lineDiv);
+	});
+
+	vertical4Div.classList.add("vertical4");
+	poemDiv.append(vertical4Div);
+};
+
+/**
+ * other rule ideas
+ * line spacing (increasing and go down, and opposite)
+ * hover?
+ * increase as go down - line spacing, dots on increasingly more words, text size, etc
  */
 
 /**
  * Set the correct variation based on the navigation
  */
 const changeVariation = (variationNum) => {
-	variationTitle.innerText = `Variation ${variationNum}`;
+	// variationTitle.innerText = `Variation ${variationNum}`;
 	poemDiv.replaceChildren();
 	switch (variationNum) {
-		case 1:
-			appendVariation1();
+		case diagonal3:
+			diagonal3();
 			break;
-		case 2:
-			appendVariation2();
+		case diagonal4:
+			diagonal4();
 			break;
-		case 3:
-			appendVariation3();
+		case diagonal1:
+			diagonal1();
 			break;
-		case 4:
-			appendVariation4();
+		case diagonal2:
+			diagonal2();
+			break;
+		case 5:
+			appendVariation5();
+			break;
+		case 6:
+			appendVariation6();
+			break;
+		case 7:
+			appendVariation7();
+			break;
+		case vertical1:
+			vertical1();
+			break;
+		case vertical2:
+			vertical2();
+			break;
+		case vertical3:
+			vertical3();
+			break;
+		case vertical4:
+			vertical4();
 			break;
 		case 0:
 			poemDiv.innerHTML = noStyling;
