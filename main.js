@@ -438,79 +438,80 @@ about();
  * Set the correct variation based on the navigation
  */
 const changeVariation = (variationNum) => {
-	// const allLinks = document.querySelectorAll("a");
-	// allLinks.forEach((link) => {
-	// 	link.classList.add("unselected");
-	// });
+	const allLinks = document.querySelectorAll("a");
+	allLinks.forEach((link) => {
+		link.classList.remove("selected");
+		link.classList.add("unselected");
+	});
 
-	// console.log(variationNum);
-	// const selected = document.getElementById("#about");
-	// console.log(selected);
-	// selected.classList.add("unselected");
+	const selected = document.getElementById(`${variationNum}`);
+	selected.classList.add("selected");
+	selected.classList.remove("unselected");
 
 	poemDiv.replaceChildren();
 	switch (variationNum) {
-		case diagonal3:
+		case "diagonal3":
 			diagonal3();
 			break;
-		case diagonal4:
+		case "diagonal4":
 			diagonal4();
 			break;
-		case diagonal1:
+		case "diagonal1":
 			diagonal1();
 			break;
-		case diagonal2:
+		case "diagonal2":
 			diagonal2();
 			break;
-		case fontSize1:
+		case "fontSize1":
 			fontSize1();
 			break;
-		case fontSize2:
+		case "fontSize2":
 			fontSize2();
 			break;
-		case fontSize3:
+		case "fontSize3":
 			fontSize3();
 			break;
-		case fontSize4:
+		case "fontSize4":
 			fontSize4();
 			break;
-		case vertical1:
+		case "vertical1":
 			vertical1();
 			break;
-		case vertical2:
+		case "vertical2":
 			vertical2();
 			break;
-		case vertical3:
+		case "vertical3":
 			vertical3();
 			break;
-		case vertical4:
+		case "vertical4":
 			vertical4();
 			break;
-		case snow1:
+		case "snow1":
 			snow1();
 			break;
-		case snow2:
+		case "snow2":
 			snow2();
 			break;
-		case snow3:
+		case "snow3":
 			snow3();
 			break;
-		case snow4:
+		case "snow4":
 			snow4();
 			break;
-		case decreaseLineHeight1:
+		case "decreaseLineHeight1":
 			decreaseLineHeight1();
 			break;
-		case decreaseLineHeight2:
+		case "decreaseLineHeight2":
 			decreaseLineHeight2();
 			break;
-		case decreaseLineHeight3:
+		case "decreaseLineHeight3":
 			decreaseLineHeight3();
 			break;
-		case decreaseLineHeight4:
+		case "decreaseLineHeight4":
 			decreaseLineHeight4();
 			break;
-		case about:
+		case "about":
+			console.log("in about case");
 			about();
 			break;
 		default:
