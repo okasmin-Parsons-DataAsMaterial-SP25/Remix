@@ -4,9 +4,23 @@ body {
 	font-family: monospace;
 }
 
+#header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 24px;
+}
+
+h1 {
+	font-size: 1.6em;
+}
+#header div {
+	font-size: 12px;
+}
+
 a {
 	color: black;
-	margin: 5px;
+	margin: 4px;
 }
 
 a:hover {
@@ -25,7 +39,7 @@ a:hover {
 }
 
 .link-row {
-	padding: 8px;
+	padding: 4px;
 	font-size: 12px;
 }
 
@@ -132,16 +146,12 @@ a:hover {
 
 .snow1 {
 	position: relative;
-	/* align-items: center; */
 	justify-content: center;
 	width: 200px;
 	height: 200px;
-
 	display: flex;
 	flex-direction: column;
-
 	transform: translate(75%, 75%);
-	/* row-gap: 300px; */
 }
 
 .snow1Line {

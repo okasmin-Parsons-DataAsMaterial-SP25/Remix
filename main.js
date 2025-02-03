@@ -30,9 +30,8 @@ const spanAllWords = lines
  * Rule 1 - Diagonal - sense of movement and playful
  */
 
-/*
- * Diagonal 3 - first and last words
- */
+//first and last words
+
 const diagonal3 = () => {
 	const firstLastWordsSpan = lines
 		.map((line, idx) => {
@@ -117,6 +116,10 @@ const diagonal2 = () => {
 
 	poemDiv.append(diagonal2Div);
 };
+
+/**
+ * font size
+ */
 
 // font size small to big
 const fontSize1 = () => {
@@ -349,6 +352,10 @@ const snow4 = () => {
 	});
 	poemDiv.append(snow4Div);
 };
+
+/**
+ * Line height
+ */
 
 // normal align left
 const decreaseLineHeight1 = () => {
