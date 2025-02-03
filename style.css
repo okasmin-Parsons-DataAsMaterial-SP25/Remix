@@ -14,8 +14,18 @@ a:hover {
 	font-weight: bolder;
 }
 
+.selected {
+	text-decoration: none;
+	font-weight: bolder;
+}
+
+.unselected {
+	text-decoration: underline;
+	font-weight: normal;
+}
+
 .link-row {
-	padding: 10px;
+	padding: 8px;
 	font-size: 12px;
 }
 
@@ -28,10 +38,10 @@ a:hover {
 #poem {
 	padding: 20px;
 	margin: 20px;
-	/* font-size: 20px; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-size: 16px;
 }
 
 .diagonal3 {
@@ -83,11 +93,6 @@ a:hover {
 	}
 }
 
-.variation7 {
-	line-height: 42px;
-	text-align: center;
-}
-
 .vertical1 {
 	line-height: 100px;
 }
@@ -125,6 +130,20 @@ a:hover {
 	min-height: 1em;
 }
 
+.snow1 {
+	position: relative;
+	/* align-items: center; */
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+
+	display: flex;
+	flex-direction: column;
+
+	transform: translate(75%, 75%);
+	/* row-gap: 300px; */
+}
+
 .snow1Line {
 	position: absolute;
 	top: 60%;
@@ -153,4 +172,9 @@ a:hover {
 
 .snow4Line {
 	text-emphasis-position: under right;
+}
+
+.about {
+	display: flex;
+	flex-direction: column;
 }

@@ -9,12 +9,7 @@ I did resign the prig –
 And ten of my once stately toes
 Are marshalled for a jig!`;
 
-const noStyling = `<pre>${poem}</pre>`;
-
 const poemDiv = document.getElementById("poem");
-
-// initialize with no styling
-poemDiv.innerHTML = noStyling;
 
 const variationTitle = document.getElementById("variation-title");
 
@@ -123,67 +118,70 @@ const diagonal2 = () => {
 	poemDiv.append(diagonal2Div);
 };
 
-/**
- * Rule 2 - condense as descend
- */
-
-/**
- * Variation 5 - increase lineHeight as descend
- */
-const appendVariation5 = () => {
-	const lineHeights = lines
-		.map((line, idx) => {
-			const lineHeight = (lines.length - idx) * 1.1 + 0.5;
-			return `<span style="font-size:16px; line-height:${lineHeight}em;">${line}</span>`;
-		})
-		.join("\n");
-
-	const variation5Div = document.createElement("div");
-	variation5Div.innerHTML = `<pre>${lineHeights}</pre>`;
-
-	poemDiv.append(variation5Div);
-};
-
-// font size
-const appendVariation6 = () => {
+// font size small to big
+const fontSize1 = () => {
 	const fontSizes = lines
 		.map((line, idx) => {
-			const fontSize = (lines.length - idx) * 2.5 + 20;
+			const fontSize = idx * 2.5 + 15;
 			return `<div style="font-size:${fontSize}px; ">${line}</div>`;
 		})
 		.join("\n");
 
-	const variation6Div = document.createElement("div");
-	variation6Div.innerHTML = `<pre>${fontSizes}</pre>`;
-
-	poemDiv.append(variation6Div);
+	const fontSize1 = document.createElement("div");
+	fontSize1.innerHTML = `<pre>${fontSizes}</pre>`;
+	poemDiv.append(fontSize1);
 };
 
-// letter spacing
-const appendVariation7 = () => {
-	const letterSpaces = lines
+// font size big to small
+const fontSize2 = () => {
+	const fontSizes = lines
 		.map((line, idx) => {
-			const letterSpacing = (lines.length - idx) * 2.5;
-			return `<span style="letter-spacing:${letterSpacing}px;">${line}</span>`;
+			const fontSize = (lines.length - idx) * 2.5 + 15;
+			return `<div style="font-size:${fontSize}px; ">${line}</div>`;
 		})
 		.join("\n");
 
-	const variation7Div = document.createElement("div");
-	variation7Div.classList.add("variation7");
-	variation7Div.innerHTML = `<pre>${letterSpaces}</pre>`;
+	const fontSize2 = document.createElement("div");
+	fontSize2.innerHTML = `<pre>${fontSizes}</pre>`;
 
-	poemDiv.append(variation7Div);
+	poemDiv.append(fontSize2);
 };
 
-const variation8 = () => {
-	const variation8Div = document.createElement("div");
-	lines.forEach((line, idx) => {
-		const lineDiv = document.createElement("div");
-		lineDiv.innerText = line;
-		lineDiv.style.fontWeight = 100 * idx + 100;
-		variation8Div.append(lineDiv);
-	});
-	poemDiv.append(variation8Div);
+const getRandomInteger = (x, y) => {
+	return Math.floor(Math.random() * (y - x + 1)) + x;
+};
+
+// random font size line
+const fontSize3 = () => {
+	const fontSizes = lines
+		.map((line) => {
+			const fontSize = getRandomInteger(12, 32);
+			return `<div style="font-size:${fontSize}px; ">${line}</div>`;
+		})
+		.join("\n");
+
+	const fontSize3Div = document.createElement("div");
+	fontSize3Div.innerHTML = `<pre>${fontSizes}</pre>`;
+
+	poemDiv.append(fontSize3Div);
+};
+
+// random font size word
+const fontSize4 = () => {
+	const fontSizes = lines
+		.map((line) => {
+			const words = line.split(" ");
+			return words
+				.map((word) => {
+					const fontSize = getRandomInteger(12, 28);
+					return `<span style="font-size:${fontSize}px; ">${word}</span>`;
+				})
+				.join(" ");
+		})
+		.join("\n");
+	const fontSize4Div = document.createElement("div");
+	fontSize4Div.innerHTML = `<pre>${fontSizes}</pre>`;
+	poemDiv.append(fontSize4Div);
 };
 
 /**
@@ -242,6 +240,7 @@ const vertical4 = () => {
 // large snowflake
 const snow1 = () => {
 	const snow1Div = document.createElement("div");
+	snow1Div.classList.add("snow1");
 	const angleIncrement = 360 / lines.length;
 
 	lines.forEach((line, idx) => {
@@ -290,6 +289,7 @@ const snow2 = () => {
 // large snowflake with decoration
 const snow3 = () => {
 	const snow3Div = document.createElement("div");
+	snow3Div.classList.add("snow1");
 	const angleIncrement = 360 / lines.length;
 
 	lines.forEach((line, idx) => {
@@ -414,11 +414,40 @@ const decreaseLineHeight4 = () => {
 	poemDiv.append(decreaseLineHeight1);
 };
 
+const about = () => {
+	const noStyling = `<pre>${poem}</pre>`;
+
+	const poemText = document.createElement("div");
+	poemText.innerHTML = noStyling;
+
+	const aboutDiv = document.createElement("div");
+
+	aboutDiv.classList.add("about");
+	const title = document.createElement("h5");
+	title.innerText = "Snow flakes. (45) by Emily Dickinson";
+	aboutDiv.append(title);
+	aboutDiv.append(poemText);
+
+	poemDiv.append(aboutDiv);
+};
+
+// initialize about page
+about();
+
 /**
  * Set the correct variation based on the navigation
  */
 const changeVariation = (variationNum) => {
-	// variationTitle.innerText = `Variation ${variationNum}`;
+	// const allLinks = document.querySelectorAll("a");
+	// allLinks.forEach((link) => {
+	// 	link.classList.add("unselected");
+	// });
+
+	// console.log(variationNum);
+	// const selected = document.getElementById("#about");
+	// console.log(selected);
+	// selected.classList.add("unselected");
+
 	poemDiv.replaceChildren();
 	switch (variationNum) {
 		case diagonal3:
@@ -433,17 +462,17 @@ const changeVariation = (variationNum) => {
 		case diagonal2:
 			diagonal2();
 			break;
-		case 5:
-			appendVariation5();
+		case fontSize1:
+			fontSize1();
 			break;
-		case 6:
-			appendVariation6();
+		case fontSize2:
+			fontSize2();
 			break;
-		case 7:
-			appendVariation7();
+		case fontSize3:
+			fontSize3();
 			break;
-		case 8:
-			variation8();
+		case fontSize4:
+			fontSize4();
 			break;
 		case vertical1:
 			vertical1();
@@ -481,13 +510,11 @@ const changeVariation = (variationNum) => {
 		case decreaseLineHeight4:
 			decreaseLineHeight4();
 			break;
-		case 0:
-			poemDiv.innerHTML = noStyling;
-			variationTitle.innerText = ``;
+		case about:
+			about();
 			break;
 		default:
-			poemDiv.innerHTML = noStyling;
-			variationTitle.innerText = ``;
+			about();
 			break;
 	}
 };
